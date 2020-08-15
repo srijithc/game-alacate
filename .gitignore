@@ -8,9 +8,7 @@
 /.bundle
 
 # Ignore Rubymine .idea folder
-/.idea
-/.idea/*
-/.idea/*/*
+**/.idea
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
@@ -26,3 +24,6 @@
 /yarn-error.log
 
 .byebug_history
+
+# Ignore all log files
+*.log
