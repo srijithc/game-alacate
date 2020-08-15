@@ -10,6 +10,7 @@
 # Ignore Rubymine .idea folder
 /.idea
 /.idea/*
+/.idea/*/*
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
