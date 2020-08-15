@@ -5,21 +5,45 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: sqlite3
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
+  adapter: mysql2
+  encoding: utf8
+  # For details on connection pooling, see rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: 30
+  timeout: 10000
+  reaping_frequency: 300
+  port: 3306
+  reconnect: true
+  variables:
+    sql_mode: NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
 
-development:
+development: &development
   <<: *default
-  database: db/development.sqlite3
+  database: game_a_la_carte_dev
+  username:
+  password:
+  host: localhost
+
+stage: &stage
+  <<: *default
+  database: game_a_la_carte_stage
+  username:
+  password:
+  host:
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
-test:
+test: &test
   <<: *default
-  database: db/test.sqlite3
+  database: game_a_la_carte_dev
+  username:
+  password:
+  host: localhost
 
-production:
+production: &production
   <<: *default
-  database: db/production.sqlite3
+  database: game_a_la_carte
+  username:
+  password:
+  host:
